@@ -3,8 +3,13 @@
 
     date_default_timezone_set('Asia/Jakarta');
     $now = new DateTime();
-    $formatter = new IntlDateFormatter('id_ID', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
+    $formatter = new IntlDateFormatter('id_ID', IntlDateFormatter::FULL, IntlDateFormatter::NONE, 'Asia/Jakarta', IntlDateFormatter::GREGORIAN);
+    
     $formattedDate = $formatter->format($now);
+    
+    $formattedDate = str_replace(',', '', $formattedDate);
+    
+    $formattedDate = "Jakarta, " . $formattedDate;
 
     $servername = "localhost";
     $username = "root";
@@ -163,7 +168,7 @@
     </div>
 
     <div class="signature">
-        <p style=" margin-top: 20px; margin-right: 25px;">Jakarta, <?php echo $formattedDate; ?></p>
+        <p style=" margin-top: 20px; margin-right: 10px;"><?php echo $formattedDate; ?></p>
         <p style="margin-top: 100px;"><strong>Lis Susanti, A.Md.I.P., S.Sos., S.Si.</strong></p>
         <p style="margin-right: 25px;">Kepala Bagian Tata Usaha</p>
     </div>
